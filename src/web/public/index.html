@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Оформление заказа - Orange</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <form id="order-form" class="order-form" novalidate>
+      <!-- Шапка -->
+      <header class="form-header">
+        <div class="logo">Orange</div>
+        <p class="subtitle">Доставка анонимная - мы не раскрываем информацию о заказчике без вашего согласия</p>
+      </header>
+
+      <!-- Основное содержимое -->
+      <div class="form-body">
+        <!-- Секция: Способ получения -->
+        <section class="form-section">
+          <h2 class="section-title">Способ получения</h2>
+          <div class="order-type-selector">
+            <label class="order-type-option">
+              <input type="radio" name="orderType" value="delivery" checked>
+              <span class="option-content">
+                <span class="option-title">Доставка</span>
+              </span>
+            </label>
+            <label class="order-type-option">
+              <input type="radio" name="orderType" value="pickup">
+              <span class="option-content">
+                <span class="option-title">Самовывоз</span>
+              </span>
+            </label>
+          </div>
+        </section>
+
+        <!-- Секция: Доставка/Самовывоз -->
+        <section class="form-section">
+          <h2 class="section-title" id="delivery-section-title">Доставка</h2>
+
+          <!-- Адрес (для доставки) -->
+          <div id="address-group">
+            <div class="form-group">
+              <label for="address">Адрес доставки <span class="required" id="address-required">*</span></label>
+              <div class="autocomplete-wrapper">
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  placeholder="Начните вводить адрес..."
+                  autocomplete="off"
+                >
+                <ul id="address-suggestions" class="suggestions-list"></ul>
+              </div>
+              <label class="checkbox-label" id="ask-recipient-label">
+                <input type="checkbox" id="ask-recipient-address" name="askRecipientAddress">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-text">Узнать адрес у получателя</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Филиал (для самовывоза) -->
+          <div class="form-group" id="branch-group" style="display: none;">
+            <label for="branch">Филиал <span class="required">*</span></label>
+            <select id="branch" name="branch">
+              <option value="" disabled selected>Выберите филиал</option>
+              <option value="Гагарина 98">Гагарина 98</option>
+              <option value="Волгарь">Волгарь</option>
+              <option value="Новая Самара">Новая Самара</option>
+            </select>
+          </div>
+
+          <!-- Дата -->
+          <div class="form-group">
+            <label for="date" id="date-label">Дата доставки <span class="required">*</span></label>
+            <div class="date-picker-wrapper">
+              <input
+                type="text"
+                id="date"
+                name="date"
+                placeholder="Выберите дату"
+                required
+                autocomplete="off"
+                readonly
+              >
+              <div id="calendar" class="calendar">
+                <div class="calendar-header">
+                  <button type="button" class="calendar-nav" id="prev-month">&lt;</button>
+                  <span class="calendar-month-year" id="calendar-month-year"></span>
+                  <button type="button" class="calendar-nav" id="next-month">&gt;</button>
+                </div>
+                <div class="calendar-weekdays">
+                  <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+                </div>
+                <div class="calendar-days" id="calendar-days"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Время -->
+          <div class="form-group">
+            <label for="time" id="time-label">Время доставки <span class="required">*</span></label>
+            <select id="time" name="time" required>
+              <option value="" disabled selected>Выберите интервал</option>
+              <option value="08:00 - 09:00">08:00 - 09:00</option>
+              <option value="09:00 - 10:00">09:00 - 10:00</option>
+              <option value="10:00 - 11:00">10:00 - 11:00</option>
+              <option value="11:00 - 12:00">11:00 - 12:00</option>
+              <option value="12:00 - 13:00">12:00 - 13:00</option>
+              <option value="13:00 - 14:00">13:00 - 14:00</option>
+              <option value="14:00 - 15:00">14:00 - 15:00</option>
+              <option value="15:00 - 16:00">15:00 - 16:00</option>
+              <option value="16:00 - 17:00">16:00 - 17:00</option>
+              <option value="17:00 - 18:00">17:00 - 18:00</option>
+              <option value="18:00 - 19:00">18:00 - 19:00</option>
+              <option value="19:00 - 20:00">19:00 - 20:00</option>
+              <option value="20:00 - 21:00">20:00 - 21:00</option>
+              <option value="21:00 - 22:00">21:00 - 22:00</option>
+              <option value="22:00 - 23:00">22:00 - 23:00</option>
+              <option value="23:00 - 00:00">23:00 - 00:00</option>
+              <option value="00:00 - 01:00">00:00 - 01:00</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- Секция: Открытка -->
+        <section class="form-section">
+          <h2 class="section-title">Открытка</h2>
+          <div class="form-group">
+            <label for="cardText">Подпись в открытке</label>
+            <textarea
+              id="cardText"
+              name="cardText"
+              placeholder="Напишите поздравление (до 20 слов)"
+              rows="3"
+              maxlength="200"
+            ></textarea>
+            <span class="hint">Оставьте пустым, если открытка не нужна</span>
+          </div>
+        </section>
+
+        <!-- Секция: Заказчик -->
+        <section class="form-section">
+          <h2 class="section-title">Ваши данные</h2>
+          <div class="form-group">
+            <label for="yourName">Ваше имя <span class="required">*</span></label>
+            <input
+              type="text"
+              id="yourName"
+              name="yourName"
+              placeholder="Как к вам обращаться?"
+              required
+            >
+          </div>
+          <div class="form-group">
+            <label for="yourPhone">Ваш телефон <span class="required">*</span></label>
+            <input
+              type="tel"
+              id="yourPhone"
+              name="yourPhone"
+              placeholder="+7"
+              value="+7"
+              required
+              pattern="[\+]?[0-9\s\-\(\)]{10,}"
+            >
+          </div>
+        </section>
+
+        <!-- Чекбокс: Заказчик = Получатель -->
+        <label class="checkbox-label" id="customer-is-recipient-label">
+          <input type="checkbox" id="customer-is-recipient" name="customerIsRecipient">
+          <span class="checkbox-custom"></span>
+          <span class="checkbox-text">Заказчик является получателем</span>
+        </label>
+
+        <!-- Секция: Получатель (только для доставки) -->
+        <section class="form-section" id="recipient-section">
+          <h2 class="section-title">Получатель</h2>
+          <div class="form-group">
+            <label for="recipientName">Имя получателя</label>
+            <input
+              type="text"
+              id="recipientName"
+              name="recipientName"
+              placeholder="Кому доставить?"
+            >
+          </div>
+          <div class="form-group">
+            <label for="recipientPhone">Телефон получателя</label>
+            <input
+              type="tel"
+              id="recipientPhone"
+              name="recipientPhone"
+              placeholder="+7"
+              value="+7"
+              pattern="[\+]?[0-9\s\-\(\)]{10,}"
+            >
+          </div>
+        </section>
+
+        <!-- Согласие на обработку данных -->
+        <label class="checkbox-label" id="privacy-consent-label">
+          <input type="checkbox" id="privacy-consent" name="privacyConsent" checked>
+          <span class="checkbox-custom"></span>
+          <span class="checkbox-text">Согласие на обработку персональных данных</span>
+        </label>
+      </div>
+
+      <!-- Подвал с кнопкой -->
+      <footer class="form-footer">
+        <input type="hidden" name="token" id="token-input">
+        <button type="submit" class="submit-btn" id="submit-btn">
+          <span class="btn-text">Отправить заказ</span>
+          <span class="btn-loader" style="display: none;"></span>
+        </button>
+      </footer>
+    </form>
+  </div>
+
+  <!-- Модальное окно успеха -->
+  <div id="success-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="success-icon">✓</div>
+      <h2>Заказ отправлен!</h2>
+      <p>Наш менеджер свяжется с вами для подтверждения.</p>
+      <p class="hint">Можете закрыть эту страницу и вернуться в мессенджер.</p>
+    </div>
+  </div>
+
+  <!-- Модальное окно ошибки -->
+  <div id="error-modal" class="modal" style="display: none;">
+    <div class="modal-content modal-error">
+      <div class="error-icon">!</div>
+      <h2>Ошибка</h2>
+      <p id="error-message">Произошла ошибка</p>
+      <button class="btn-secondary" onclick="closeErrorModal()">Попробовать снова</button>
+    </div>
+  </div>
+
+  <script src="/js/order-form.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "max-bot-orange",
+  "version": "1.0.0",
+  "description": "Бот-нейроквалификатор для мессенджера MAX с ИИ и каталогом цветов",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.0",
+    "better-sqlite3": "^11.0.0",
+    "dotenv": "^16.4.0",
+    "express": "^5.2.1",
+    "form-data": "^4.0.0",
+    "sharp": "^0.33.0",
+    "xml2js": "^0.6.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
